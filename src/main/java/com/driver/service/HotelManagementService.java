@@ -19,8 +19,8 @@ public class HotelManagementService {
     private HotelManagementRepository hotelManagementRepository;
 
     public String addHotel(Hotel hotel) {
-        hotelManagementRepository.addHotel(hotel);
-        return hotel.getHotelName();
+        return hotelManagementRepository.addHotel(hotel);
+
     }
 
     public Integer addUser(User user) {
@@ -45,7 +45,7 @@ public class HotelManagementService {
             throw new RuntimeException("Hotel not found");
         }
         if(hotel.getAvailableRooms() < bookingReq.getNoOfRooms()){
-            throw new RuntimeException("rooms are not enough");
+            return -1;
         }
         hotel.setAvailableRooms(hotel.getAvailableRooms() - bookingReq.getNoOfRooms());
         int price = hotel.getPricePerNight();

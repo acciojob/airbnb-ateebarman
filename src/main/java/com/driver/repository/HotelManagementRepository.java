@@ -40,17 +40,18 @@ public class HotelManagementRepository {
 
     }
 
-    public void addHotel(Hotel hotel) {
+    public String addHotel(Hotel hotel) {
         if (hotel == null || hotel.getHotelName() == null
                 || hotel.getHotelName().isEmpty()) {
-            throw new IllegalArgumentException("Invalid hotel");
+            return "FAILURE";
         }
         String name = hotel.getHotelName();
         if (hotelHashMap.containsKey(name)) {
-            throw new IllegalArgumentException("Hotel already exists");
+            return "FAILURE";
         }
 
         hotelHashMap.put(name, hotel);
+        return "SUCCESS";
 
     }
 

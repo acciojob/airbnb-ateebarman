@@ -7,13 +7,7 @@ import com.driver.model.Hotel;
 import com.driver.model.User;
 import com.driver.service.HotelManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -77,7 +71,8 @@ public class HotelManagementController {
     }
 
     @PutMapping("/update-facilities")
-    public Hotel updateFacilities(List<Facility> newFacilities,String hotelName){
+    public Hotel updateFacilities(@RequestBody List<Facility> newFacilities,
+                                  @RequestParam String hotelName){
 
         //We are having a new facilites that a hotel is planning to bring.
         //If the hotel is already having that facility ignore that facility otherwise add that facility in the hotelDb
